@@ -1,0 +1,352 @@
+{
+    "$schema": "ml_metadata",
+    "$id": "001a",
+    "type": "object",
+    "title": "ML metadata schema",
+    "description": "This schema defines how metadata is passed from an inference container to frontend.",
+    "default": {},
+    "examples": [
+        {
+            "inference_type": "detection",
+            "boxes": [
+                {
+                    "vertex": [
+                        0.12,
+                        0.1
+                    ],
+                    "width": 0.03,
+                    "height": 0.05
+                },
+                {
+                    "vertex": [
+                        0.35,
+                        0.42
+                    ],
+                    "width": 0.03,
+                    "height": 0.05
+                }
+            ],
+            "labels": [
+                {
+                    "label": "masked",
+                    "confidence": 0.93
+                },
+                {
+                    "label": "unmasked",
+                    "confidence": 0.77
+                }
+            ],
+            "colour": [
+                {
+                    "hint": "positive"
+                },
+                {
+                    "hint": "negative"
+                }
+            ],
+            "development_dict": [
+                {
+                    "surplus": "extra"
+                },
+                {
+                    "surplus": "extra"
+                }
+            ]
+        }
+    ],
+    "required": [
+        "inference_type",
+        "boxes",
+        "labels",
+        "colour",
+        "development_dict"
+    ],
+    "properties": {
+        "inference_type": {
+            "$id": "#/properties/inference_type",
+            "type": "string",
+            "title": "The inference_type schema",
+            "description": "This string defines the type of inference being done.",
+            "default": "",
+            "examples": [
+                "detection"
+            ]
+        },
+        "boxes": {
+            "$id": "#/properties/boxes",
+            "type": "array",
+            "title": "The boxes schema",
+            "description": "This array contains various items to define bounding box information",
+            "default": [],
+            "examples": [
+                [
+                    {
+                        "vertex": [
+                            0.12,
+                            0.1
+                        ],
+                        "width": 0.03,
+                        "height": 0.05
+                    },
+                    {
+                        "vertex": [
+                            0.35,
+                            0.42
+                        ],
+                        "width": 0.03,
+                        "height": 0.05
+                    }
+                ]
+            ],
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/boxes/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/boxes/items/anyOf/0",
+                        "type": "object",
+                        "title": "The box schema",
+                        "description": "A box item defines a top-left vertex, width and height for each member bounding box, all values normalized to a 0 to 1 scale..",
+                        "default": {},
+                        "examples": [
+                            {
+                                "vertex": [
+                                    0.12,
+                                    0.1
+                                ],
+                                "width": 0.03,
+                                "height": 0.05
+                            }
+                        ],
+                        "required": [
+                            "vertex",
+                            "width",
+                            "height"
+                        ],
+                        "properties": {
+                            "vertex": {
+                                "$id": "#/properties/boxes/items/anyOf/0/properties/vertex",
+                                "type": "array",
+                                "title": "The vertex schema",
+                                "description": "This array contains the normalized vertex co-ordinates.",
+                                "default": [],
+                                "examples": [
+                                    [
+                                        0.12,
+                                        0.1
+                                    ]
+                                ],
+                                "additionalItems": true,
+                                "items": {
+                                    "$id": "#/properties/boxes/items/anyOf/0/properties/vertex/items",
+                                    "anyOf": [
+                                        {
+                                            "$id": "#/properties/boxes/items/anyOf/0/properties/vertex/items/anyOf/0",
+                                            "type": "number",
+                                            "title": "The first vertex item schema",
+                                            "description": "A top-left vertex in normalized Cartesian co-ordinates.",
+                                            "default": 0.0,
+                                            "examples": [
+                                                0.12,
+                                                0.1
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            "width": {
+                                "$id": "#/properties/boxes/items/anyOf/0/properties/width",
+                                "type": "number",
+                                "title": "The width schema",
+                                "description": "The width of a bounding box normalized to 1.",
+                                "default": 0.0,
+                                "examples": [
+                                    0.03
+                                ]
+                            },
+                            "height": {
+                                "$id": "#/properties/boxes/items/anyOf/0/properties/height",
+                                "type": "number",
+                                "title": "The height schema",
+                                "description": "The height of a bounding box normalized to 1.",
+                                "default": 0.0,
+                                "examples": [
+                                    0.05
+                                ]
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                ]
+            }
+        },
+        "labels": {
+            "$id": "#/properties/labels",
+            "type": "array",
+            "title": "The labels schema",
+            "description": "An array of labels and confidences.",
+            "default": [],
+            "examples": [
+                [
+                    {
+                        "label": "masked",
+                        "confidence": 0.93
+                    },
+                    {
+                        "label": "unmasked",
+                        "confidence": 0.77
+                    }
+                ]
+            ],
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/labels/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/labels/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first label+conf schema",
+                        "description": "A label in string format and confidence in 2-dp float.",
+                        "default": {},
+                        "examples": [
+                            {
+                                "label": "masked",
+                                "confidence": 0.93
+                            }
+                        ],
+                        "required": [
+                            "label",
+                            "confidence"
+                        ],
+                        "properties": {
+                            "label": {
+                                "$id": "#/properties/labels/items/anyOf/0/properties/label",
+                                "type": "string",
+                                "title": "The label schema",
+                                "description": "The inference label",
+                                "default": "",
+                                "examples": [
+                                    "masked"
+                                ]
+                            },
+                            "confidence": {
+                                "$id": "#/properties/labels/items/anyOf/0/properties/confidence",
+                                "type": "number",
+                                "title": "The confidence schema",
+                                "description": "The confidence of the prediction",
+                                "default": 0.0,
+                                "examples": [
+                                    0.93
+                                ]
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                ]
+            }
+        },
+        "colour": {
+            "$id": "#/properties/colour",
+            "type": "array",
+            "title": "The colour schema",
+            "description": "An array of colouring hints",
+            "default": [],
+            "examples": [
+                [
+                    {
+                        "hint": "positive"
+                    },
+                    {
+                        "hint": "negative"
+                    }
+                ]
+            ],
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/colour/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/colour/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first color object schema",
+                        "description": "Contains a hint and associated colouring suggestion.",
+                        "default": {},
+                        "examples": [
+                            {
+                                "hint": "positive"
+                            }
+                        ],
+                        "required": [
+                            "hint"
+                        ],
+                        "properties": {
+                            "hint": {
+                                "$id": "#/properties/colour/items/anyOf/0/properties/hint",
+                                "type": "string",
+                                "title": "The hint schema",
+                                "description": "A colouring suggestion for frontend.",
+                                "default": "",
+                                "examples": [
+                                    "positive"
+                                ]
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                ]
+            }
+        },
+        "development_dict": {
+            "$id": "#/properties/development_dict",
+            "type": "array",
+            "title": "The development_dict schema",
+            "description": "An array containing an arbitrary dictionary.",
+            "default": [],
+            "examples": [
+                [
+                    {
+                        "surplus": "extra"
+                    },
+                    {
+                        "surplus": "extra"
+                    }
+                ]
+            ],
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/development_dict/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/development_dict/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first dev_dict object schema",
+                        "description": "Any k:v pair can be inserted here, remove before final release",
+                        "default": {},
+                        "examples": [
+                            {
+                                "surplus": "extra"
+                            }
+                        ],
+                        "required": [
+                            "surplus"
+                        ],
+                        "properties": {
+                            "surplus": {
+                                "$id": "#/properties/development_dict/items/anyOf/0/properties/surplus",
+                                "type": "string",
+                                "title": "The surplus schema",
+                                "description": "An arbitrary key:value pair",
+                                "default": "",
+                                "examples": [
+                                    "extra"
+                                ]
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                ]
+            }
+        }
+    },
+    "additionalProperties": true
+}
