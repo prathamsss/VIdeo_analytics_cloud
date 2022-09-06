@@ -39,10 +39,6 @@ RUN make
 ENV LD_LIBRARY_PATH=/opt/amazon-kinesis-video-streams-producer-sdk-cpp/open-source/local/lib
 ENV GST_PLUGIN_PATH=/opt/amazon-kinesis-video-streams-producer-sdk-cpp/build/:$GST_PLUGIN_PATH
 
-
-RUN export GST_PLUGIN_PATH=/opt/amazon-kinesis-video-streams-producer-sdk-cpp/build
-RUN export LD_LIBRARY_PATH=/opt/amazon-kinesis-video-streams-producer-sdk-cpp/open-source/local/lib
-
 # main program
 COPY requirements.txt /app/requirements.txt
 
@@ -52,6 +48,4 @@ WORKDIR /app
 RUN pip3 install -r requirements.txt
 
 COPY . /app
-
-
 ENTRYPOINT ["python3", "main.py"]
