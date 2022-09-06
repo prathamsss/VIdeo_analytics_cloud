@@ -39,7 +39,7 @@ RUN make
 ENV LD_LIBRARY_PATH=/opt/amazon-kinesis-video-streams-producer-sdk-cpp/open-source/local/lib
 ENV GST_PLUGIN_PATH=/opt/amazon-kinesis-video-streams-producer-sdk-cpp/build/:$GST_PLUGIN_PATH
 
-RUN cd
+WORKDIR /app
 COPY requirements.txt /app/requirements.txt
 
 WORKDIR /app
