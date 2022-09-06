@@ -1,8 +1,15 @@
-# Video Analytics Using AWS Rekognition API
 
-### Installation:
-        
-            pip install -r requirements.txt
+# Video Analytics Pipeline - Serving Multiple models Together
+
+Hey Thanks for giving me this oppotunity for test at Xihlem Robotics.
+Here I have presented sample of my recent python project. 
+
+AIM : Motivation to develop this system was to do video analytics on any
+Objective: 
+ 1. 
+ 2. Objective of this project is to have a system where Video Analytics can done in the cloud via streamming video from any source to cloud. In this Video analytics pipeline
+there are multiple models such as Face detection, object detection, static person detection working toghther in parallel, inference is done in parallel.
+
 
 Va module costumes frames using AWS KVS => Applies detection algorithms on frames => pumps output into KDS Consumer  
 Hence, it has for following features:
