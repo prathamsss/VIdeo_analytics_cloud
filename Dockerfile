@@ -1,4 +1,3 @@
-FROM ubuntu
 FROM python:3.9
 
 LABEL MAINTAINER "pratham.sardeshmukh@gmail.com"
@@ -25,11 +24,8 @@ RUN apt-get update && \
 	make \
 	openssh-server \
 	pkg-config \
-	vim
-
-
-RUN apt-get update && apt-get -y install \
-    ffmpeg \
+	vim \
+	ffmpeg \
     libsm6 \
     libxext6
 

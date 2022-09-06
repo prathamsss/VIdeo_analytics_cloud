@@ -4,12 +4,12 @@
 Hey Thanks for giving me this oppotunity for test at Xihlem Robotics.
 Here I have presented sample of my recent python project. 
 
-AIM : Motivation to develop this system was to do video analytics on any
-Objective: 
- 1. 
- 2. Objective of this project is to have a system where Video Analytics can done in the cloud via streamming video from any source to cloud. In this Video analytics pipeline
-there are multiple models such as Face detection, object detection, static person detection working toghther in parallel, inference is done in parallel.
+AIM : Motivation to develop this system was to do video analytics infernece of multiple models in parallel on video stream coming via Cloud.
 
+Objective: 
+ 1. Streaming Video from any camera/robot to cloud using producer consumer arrchietcure with the help of AWS KVS based HTTP streaming.  
+ 2. This stream from cloud would be consumed by multiple Machine Learning Models in parallel using Threading architecture and write a final output data in json. 
+ 3. Here you could also mention specific models to run in
 
 Va module costumes frames using AWS KVS => Applies detection algorithms on frames => pumps output into KDS Consumer  
 Hence, it has for following features:
